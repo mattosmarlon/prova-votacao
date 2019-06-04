@@ -14,7 +14,7 @@ public interface VotacaoRepository extends CrudRepository<Votacao, Integer> {
 
     @Query(value =
             "SELECT " +
-                    "    new br.com.prova.votacao.domain.dto.resultado.VotacaoResultadoDto(V.opcao, count(*)) " +
+                    "    new br.com.prova.provavotacao.domain.dto.resultado.VotacaoResultadoDto(V.opcao, count(*)) " +
                     "FROM Pauta P " +
                     "JOIN Sessao S " +
                     "ON S.codigoPauta = P.codigo " +

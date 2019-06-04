@@ -12,10 +12,12 @@ import br.com.prova.provavotacao.infrastructure.exception.NegocioException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.Instant;
 
+@Service
 public class VotacaoServiceImpl implements VotacaoService {
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
