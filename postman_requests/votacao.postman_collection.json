@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "1537d2a9-44e3-45a5-a633-1c4a58530e15",
+		"name": "votacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 - Criar Pauta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"descricao\": \"PRIMEIRA PAUTA\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/pauta",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pauta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2 - Criar Sessao",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"codigoPauta\": 1,\r\n  \"dataAbertura\": \"2019-05-05T22:32:41.525Z\",\r\n  \"dataEncerramento\": \"2019-07-05T22:32:41.525Z\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/sessao",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sessao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3 - Votar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"codigoAssociado\": 7,\r\n  \"opcao\": \"Sim\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/v1/voto/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"voto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
