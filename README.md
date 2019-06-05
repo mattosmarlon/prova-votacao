@@ -2,7 +2,7 @@
 
 Conjunto de APIs REST para votações em pauta.
 
-##Para executar a aplicação...
+# Para executar a aplicação...
 
 Para ver a aplicação rodando basta executar os seguintes passos:
 
@@ -14,7 +14,7 @@ Após esses passos a aplicação deve estar rodando na porta 8383, se disponíve
 
 http://localhost:8383/swagger-ui.html/
 
-##Experiências e escolhas
+# Experiências e escolhas
 
 O desenvolvimento foi feito com Spring Boot 2.1.5 possibilitando um 
 desenvolvimento bastante agil e banco de dados escolhido foi o MySQL.
@@ -31,22 +31,22 @@ Dentre algumas melhorias que se poderia vir a desenvolver seria a remoção de a
 duplicações de código, indicados pelo Sonar. Além de mais testes em cima de classes de exceções e testes de carga para garantir uma certa estabilidade da aplicação. 
 
 
-##Sonarqube
+# Sonarqube
 Para ter uma avaliação minima da aplicação utilizei o sonar para este objetivo, a 
 ideia neste ponto era expor a integração com o mesmo, possíbilitando algumas dicas de 
 refatoração que a ferramenta possíbilita. 
 
 O resultado da avaliação pode ser visto em: https://sonarcloud.io/dashboard?id=marlon
 
-##Postman
+## Postman
 
 Além da execução via Swagger, podemos fazer testes via Postman, no diretório 
 "/postman_requests/" existem arquivos para importação no postman onde será possível 
 executar as APIs de criação de entidades, ou seja, criar pauta, sessão e executar uma votação.
 Para isso será necessário importar os arquivos para dentro do postment, onde:   
 
-####votacao.postman_environment.json
+- votacao.postman_environment.json
 São os environments de localhost padrão. 
 
-####votacao.postman_collection.json
+- votacao.postman_collection.json
 Possui a coleção com os endpoints para executar os comandos POST.
