@@ -12,7 +12,7 @@ Para ver a aplicação rodando basta executar os seguintes passos:
 
 Após esses passos a aplicação deve estar rodando na porta 8383, se disponível, e podemos conferir todos os endpoints através do Swagger.
 
-http://localhost:8383/swagger-ui.html/
+http://localhost:8383/swagger-ui.html#/
 
 # Experiências e escolhas
 
