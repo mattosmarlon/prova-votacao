@@ -3,7 +3,7 @@ spring:
     name: prova-votacao
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/prova
+    url: jdbc:mysql://prova-votacao-db:3306/prova
     username: root
     password: root
   jpa:

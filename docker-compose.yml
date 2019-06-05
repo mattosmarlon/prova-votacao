@@ -1,0 +1,32 @@
+version : '2'
+
+services:
+  prova-votacao-app:
+    build:
+      context: .
+      dockerfile: docker-app.dockerfile
+    ports:
+      - "8383:8383"
+    networks:
+      - net-backend
+    depends_on:
+      - prova-votacao-db
+
+  prova-votacao-db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: prova
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: root
+    networks:
+      - net-backend
+
+networks:
+  net-backend:
+
+volumes:
+  db_data:
