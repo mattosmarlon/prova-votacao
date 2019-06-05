@@ -31,7 +31,7 @@ dependencies {
 
 sonarqube {
 	properties {
-		property "sonar.test.exclusions", "**/dto/**, **/entity/**"
-		property "sonar.coverage.exclusions", "**/dto/**, **/entity/**"
+		property "sonar.test.exclusions", "**/dto/**, **/entity/**, **/handler/**"
+		property "sonar.coverage.exclusions", "**/dto/**, **/entity/**, **/handler/**"
 	}
 }
