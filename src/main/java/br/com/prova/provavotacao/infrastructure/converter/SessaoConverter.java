@@ -17,7 +17,6 @@ public class SessaoConverter {
         sessaoDto.setCodigoPauta(sessao.getCodigoPauta());
         sessaoDto.setDataAbertura(sessao.getDataAbertura());
         sessaoDto.setDataEncerramento(sessao.getDataEncerramento());
-        sessaoDto.setDataCadastro(sessao.getDataCadastro());
         return sessaoDto;
     }
 

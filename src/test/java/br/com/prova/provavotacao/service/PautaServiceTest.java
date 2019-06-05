@@ -39,7 +39,6 @@ public class PautaServiceTest {
         createDto.setDescricao("PAUTA DESCRIPTION");
         PautaDto pautaDto = pautaService.create(createDto);
         assertNotNull(pautaDto);
-        assertNotNull(pautaDto.getDataCadastro());
     }
 
     @Test
@@ -49,7 +48,6 @@ public class PautaServiceTest {
         assertNotNull(pauta);
         assertNotNull(pauta.getCodigo());
         assertNotNull(pauta.getDescricao());
-        assertNotNull(pauta.getDataCadastro());
     }
 
     @Test(expected = ObjetoNotFoundException.class)

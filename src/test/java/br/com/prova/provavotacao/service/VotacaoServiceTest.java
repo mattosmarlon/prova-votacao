@@ -97,7 +97,6 @@ public class VotacaoServiceTest {
 
     private PautaDto getFakePauta() {
         PautaDto pauta = new PautaDto();
-        pauta.setDataCadastro(Date.from(Instant.now()));
         pauta.setDescricao("DESCRIÇÃO PAUTA");
         pauta.setCodigo(1);
         return pauta;

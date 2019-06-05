@@ -1,6 +1,8 @@
 plugins {
 	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id "org.sonarqube" version "2.7"
 	id 'java'
+	id 'jacoco'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -25,4 +27,11 @@ dependencies {
 	testImplementation 'org.mockito:mockito-core'
 	testImplementation 'pl.pragmatists:JUnitParams:1.1.1'
 	testImplementation 'com.h2database:h2:1.4.194'
+}
+
+sonarqube {
+	properties {
+		property "sonar.test.exclusions", "**/dto/**, **/entity/**"
+		property "sonar.coverage.exclusions", "**/dto/**, **/entity/**"
+	}
 }

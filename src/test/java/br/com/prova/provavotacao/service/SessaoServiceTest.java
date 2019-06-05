@@ -42,7 +42,6 @@ public class SessaoServiceTest {
         createDto.setDataEncerramento(DateUtils.addDays(Date.from(Instant.now()), 5));
         SessaoDto sessaoDto = service.create(createDto);
         assertNotNull(sessaoDto);
-        assertNotNull(sessaoDto.getDataCadastro());
     }
 
     @Test
@@ -53,7 +52,6 @@ public class SessaoServiceTest {
         assertNotNull(sessaoDto.getCodigo());
         assertNotNull(sessaoDto.getDataAbertura());
         assertNotNull(sessaoDto.getDataEncerramento());
-        assertNotNull(sessaoDto.getDataCadastro());
     }
 
     @Test(expected = ObjetoNotFoundException.class)
@@ -99,7 +97,6 @@ public class SessaoServiceTest {
         sessao.setCodigoPauta(1);
         sessao.setDataAbertura(Date.from(Instant.now()));
         sessao.setDataEncerramento(DateUtils.addDays(Date.from(Instant.now()), 5));
-        sessao.setDataCadastro(Date.from(Instant.now()));
         return sessao;
     }
 }

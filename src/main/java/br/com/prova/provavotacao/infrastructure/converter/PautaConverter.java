@@ -15,7 +15,6 @@ public class PautaConverter {
         PautaDto pautaDto = new PautaDto();
         pautaDto.setCodigo(pauta.getCodigo());
         pautaDto.setDescricao(pauta.getDescricao());
-        pautaDto.setDataCadastro(pauta.getDataCadastro());
         return pautaDto;
     }
 
