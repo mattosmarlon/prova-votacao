@@ -10,6 +10,8 @@ public class VotoDto {
 
     private Integer codigoAssociado;
 
+    private String cpf;
+
     public OpcaoVoto getOpcao() {
         return opcao;
     }
@@ -24,6 +26,14 @@ public class VotoDto {
 
     public void setCodigoAssociado(Integer codigoAssociado) {
         this.codigoAssociado = codigoAssociado;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     @Override

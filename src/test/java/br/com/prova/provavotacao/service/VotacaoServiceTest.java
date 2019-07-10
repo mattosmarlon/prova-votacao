@@ -12,12 +12,15 @@ import br.com.prova.provavotacao.infrastructure.converter.PautaConverter;
 import br.com.prova.provavotacao.infrastructure.converter.SessaoConverter;
 import br.com.prova.provavotacao.infrastructure.exception.IntegridadeException;
 import br.com.prova.provavotacao.infrastructure.exception.NegocioException;
+import br.com.prova.provavotacao.infrastructure.facade.UserInfoFacade;
+import br.com.prova.provavotacao.infrastructure.service.NotificacaoResultadoService;
 import br.com.prova.provavotacao.infrastructure.service.VotacaoServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.Instant;
@@ -48,6 +51,12 @@ public class VotacaoServiceTest {
 
     @Spy
     private SessaoConverter sessaoConverter;
+
+    @Mock
+    private UserInfoFacade UserInfoFacade;
+
+    @Mock
+    private NotificacaoResultadoService notificacaoResultadoService;
 
     @Test(expected = IntegridadeException.class)
     public void votarAssociadoIntegridadeExceptionTest() {
