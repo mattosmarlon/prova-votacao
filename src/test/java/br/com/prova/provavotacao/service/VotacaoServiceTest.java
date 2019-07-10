@@ -1,6 +1,7 @@
 package br.com.prova.provavotacao.service;
 
 import br.com.prova.provavotacao.domain.dto.PautaDto;
+import br.com.prova.provavotacao.domain.dto.UsuarioHabilitadoDto;
 import br.com.prova.provavotacao.domain.dto.VotoDto;
 import br.com.prova.provavotacao.domain.dto.enums.OpcaoVoto;
 import br.com.prova.provavotacao.domain.dto.resultado.PautaResultadoDto;
@@ -27,6 +28,7 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -83,12 +85,43 @@ public class VotacaoServiceTest {
         service.votar(1, votoDto);
     }
 
-    @Test
-    public void votarSucessoTest() {
+    @Test(expected = NegocioException.class)
+    public void votarAssociadoNaoHabilitadoRestTest() {
+        UsuarioHabilitadoDto fakeInfo = new UsuarioHabilitadoDto();
+        fakeInfo.setStatus("NOT");
         VotoDto votoDto = new VotoDto();
         votoDto.setCodigoAssociado(1);
         votoDto.setOpcao(OpcaoVoto.Nao);
+        votoDto.setCpf("00100100102");
         when(sessaoService.aberta(1)).thenReturn(true);
+        when(UserInfoFacade.usuarioHabilitado("00100100102")).thenReturn(Optional.of(fakeInfo));
+        when(repository.existsByCodigoSessaoAndCodigoAssociado(1, 1)).thenReturn(false);
+        service.votar(1, votoDto);
+    }
+
+    @Test(expected = NegocioException.class)
+    public void votarAssociadoNaoHabilitadoRestNullTest() {
+        //TODO: Criar builders para esses objetos iguais
+        VotoDto votoDto = new VotoDto();
+        votoDto.setCodigoAssociado(1);
+        votoDto.setOpcao(OpcaoVoto.Nao);
+        votoDto.setCpf("00100100102");
+        when(sessaoService.aberta(1)).thenReturn(true);
+        when(UserInfoFacade.usuarioHabilitado("00100100102")).thenReturn(Optional.empty());
+        when(repository.existsByCodigoSessaoAndCodigoAssociado(1, 1)).thenReturn(false);
+        service.votar(1, votoDto);
+    }
+
+    @Test
+    public void votarSucessoTest() {
+        UsuarioHabilitadoDto fakeInfo = new UsuarioHabilitadoDto();
+        fakeInfo.setStatus("ABLE_TO_VOTE");
+        VotoDto votoDto = new VotoDto();
+        votoDto.setCodigoAssociado(1);
+        votoDto.setOpcao(OpcaoVoto.Nao);
+        votoDto.setCpf("00100100102");
+        when(sessaoService.aberta(1)).thenReturn(true);
+        when(UserInfoFacade.usuarioHabilitado("00100100102")).thenReturn(Optional.of(fakeInfo));
         when(repository.existsByCodigoSessaoAndCodigoAssociado(1, 1)).thenReturn(false);
         service.votar(1, votoDto);
     }

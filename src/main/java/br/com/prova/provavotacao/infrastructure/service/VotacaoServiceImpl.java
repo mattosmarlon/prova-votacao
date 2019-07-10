@@ -23,7 +23,7 @@ import java.util.Optional;
 @Service
 public class VotacaoServiceImpl implements VotacaoService {
 
-    private final String USER_ABLE_TO_VOTE = "ABLE_TO_VOTE";
+    private static final String USER_ABLE_TO_VOTE = "ABLE_TO_VOTE";
 
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -57,7 +57,7 @@ public class VotacaoServiceImpl implements VotacaoService {
         if (!associadoHabilitado(sessaoId, votoDto.getCodigoAssociado())) {
             throw new NegocioException("Associado já votou nessa sessão.");
         }
-        if (cpfHabilitadoParaVotacao(votoDto.getCpf())) {
+        if (!cpfHabilitadoParaVotacao(votoDto.getCpf())) {
             throw new NegocioException("Associado já está apto a votação ou CPF informado não é válido.");
         }
         Votacao voto = new Votacao();

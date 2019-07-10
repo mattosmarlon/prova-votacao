@@ -14,6 +14,9 @@ Após esses passos a aplicação deve estar rodando na porta 8383, se disponíve
 
 http://localhost:8383/swagger-ui.html#/
 
+A utilização das APIs funciona com a criação de uma Pauta e  a criação de um Sessão, 
+vinculando o código da pauta a sessão. É possivel fazer uma votação informando a sessão e o colaborador.
+
 # Experiências e escolhas
 
 O desenvolvimento foi feito com Spring Boot 2.1.5 possibilitando um 
@@ -28,8 +31,22 @@ nuvem, seja através de um pipeline via Jenkins ou outra ferramenta, entre outra
 opções que o docker possibilita. 
 
 Dentre algumas melhorias que se poderia vir a desenvolver seria a remoção de algumas 
-duplicações de código, indicados pelo Sonar. Além de mais testes em cima de classes de exceções e testes de carga para garantir uma certa estabilidade da aplicação. 
+duplicações de código, indicados pelo Sonar. Além de mais testes em cima de classes de exceções e testes de carga para garantir uma certa estabilidade da aplicação.
 
+# RabbitMQ
+Para notificação dos resultados escolhi o RabbitMQ por questões de praticidade e convivência. Após a solicitação de um resultado,
+o mesmo será enviado para um enxhange do rabbit onde será propagado para mais duas filas, onde a ideia é que
+dois sistemas diferentes possam consumilas independentemente.
+
+O resultado pode ser verificado em: http://localhost:15672/#/queues
+
+# Versionamento das APIs
+A abortagem que utilizaria para versionar as apis seria adicionar a versão a URL, ficando algo como...
+
+- http://localhost:8383/api/v1/pauta
+- http://localhost:8383/api/v2/pauta
+
+Desta forma é possível evitar a quebra de contratos.
 
 # Sonarqube
 Para ter uma avaliação minima da aplicação utilizei o sonar para este objetivo, a 
